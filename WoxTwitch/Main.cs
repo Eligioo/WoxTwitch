@@ -22,7 +22,7 @@ namespace WoxTwitch
             {
                 return API.TWTOPSTREAMS();
             }
-            else if (query.FirstSearch == "twstream" && query.SecondToEndSearch.Length >= 2)
+            else if (query.FirstSearch == "twstream" && query.SecondToEndSearch.Length >= 4)
             {
                 return API.TWSEARCH(query.SecondToEndSearch);
             }
