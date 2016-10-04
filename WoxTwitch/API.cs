@@ -11,6 +11,19 @@ namespace WoxTwitch
         private string client_id = "j5saf8c8u17xkm45dh86lbxnkw00n9j";
         private int Score = 50;
 
+        public List<Result> CALL<T>(T DataType, string UrlRoute, int UrlLimit, string UrlQuery) where T : new()
+        {
+            Reset();
+            T Object = new T();
+            string url = URLBuilder(UrlRoute, UrlLimit, UrlQuery);
+            using (var webClient = new System.Net.WebClient())
+            {
+                var jsontxt = webClient.DownloadString(url);
+                Object = JsonConvert.DeserializeObject<T>(jsontxt);
+            }
+            return new List<Result>();
+        }
+
         public List<Result> TWTOPGAMES()
         {
             Reset();
@@ -66,11 +79,11 @@ namespace WoxTwitch
             return results;
         }
 
-        public List<Result> TWSEARCHBYGAME(string query)
+        public List<Result> TWSEARCH(string query)
         {
             Reset();
             var SearchStream = new Objects.SearchStream.RootObject();
-            string url = URLBuilder("search/streams", 10, "&q="+query).Replace(" ", "%20");
+            string url = URLBuilder("search/streams", 10, query).Replace(" ", "%20");
             using (var webClient = new System.Net.WebClient())
             {
                 var jsontxt = webClient.DownloadString(url);
@@ -109,7 +122,7 @@ namespace WoxTwitch
                 suffix = "?limit=" + limit + "&client_id=" + client_id;
             }
             else
-                suffix = "?limit=" + limit + "&client_id=" + client_id + query;
+                suffix = "?limit=" + limit + "&client_id=" + client_id + "&q=" + query;
             return prefix + between + suffix;
         }
     }
