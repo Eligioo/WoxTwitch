@@ -66,11 +66,11 @@ namespace WoxTwitch
             return results;
         }
 
-        public List<Result> TWSEARCHBYGAME(string query)
+        public List<Result> TWSEARCH(string query)
         {
             Reset();
             var SearchStream = new Objects.SearchStream.RootObject();
-            string url = URLBuilder("search/streams", 10, "&q="+query).Replace(" ", "%20");
+            string url = URLBuilder("search/streams", 10, query).Replace(" ", "%20");
             using (var webClient = new System.Net.WebClient())
             {
                 var jsontxt = webClient.DownloadString(url);
@@ -109,7 +109,7 @@ namespace WoxTwitch
                 suffix = "?limit=" + limit + "&client_id=" + client_id;
             }
             else
-                suffix = "?limit=" + limit + "&client_id=" + client_id + query;
+                suffix = "?limit=" + limit + "&client_id=" + client_id + "&q=" + query;
             return prefix + between + suffix;
         }
     }
