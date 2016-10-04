@@ -11,19 +11,6 @@ namespace WoxTwitch
         private string client_id = "j5saf8c8u17xkm45dh86lbxnkw00n9j";
         private int Score = 50;
 
-        public List<Result> CALL<T>(T DataType, string UrlRoute, int UrlLimit, string UrlQuery) where T : new()
-        {
-            Reset();
-            T Object = new T();
-            string url = URLBuilder(UrlRoute, UrlLimit, UrlQuery);
-            using (var webClient = new System.Net.WebClient())
-            {
-                var jsontxt = webClient.DownloadString(url);
-                Object = JsonConvert.DeserializeObject<T>(jsontxt);
-            }
-            return new List<Result>();
-        }
-
         public List<Result> TWTOPGAMES()
         {
             Reset();
