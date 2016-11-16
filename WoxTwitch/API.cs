@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using Wox.Plugin;
+using System.Windows;
 
 namespace WoxTwitch
 {
@@ -10,6 +12,12 @@ namespace WoxTwitch
         private List<Result> results = new List<Result>();
         private string client_id = "j5saf8c8u17xkm45dh86lbxnkw00n9j";
         private int Score = 50;
+        Settings settings;
+
+        public API(Settings settings)
+        {
+            this.settings = settings;
+        }
 
         public List<Result> TWTOPGAMES()
         {
@@ -52,13 +60,13 @@ namespace WoxTwitch
             {
                 results.Add(new Result
                 {
-                    Title = item.channel.display_name +" - "+ item.channel.status,
+                    Title = item.channel.display_name + " - " + item.channel.status,
                     SubTitle = item.channel.game +" - "+ item.viewers.ToString("n0") + " viewers are currently watching!",
                     IcoPath = "Images\\app.png",
                     Score = Score - 1,
                     Action = c =>
                     {
-                        Process.Start(item.channel.url);
+                        Launcher(item.channel.url);
                         return true;
                     }
                 });
@@ -86,7 +94,7 @@ namespace WoxTwitch
                     Score = Score - 1,
                     Action = c =>
                     {
-                        Process.Start(item.channel.url);
+                        Launcher(item.channel.url);
                         return true;
                     }
                 });
@@ -98,6 +106,25 @@ namespace WoxTwitch
         {
             this.results.Clear();
             this.Score = 50;
+        }
+
+        private void Launcher(string launchParameter)
+        {
+            if (settings.Launch == Launch.Browser)
+            {
+                Process.Start(launchParameter);
+            }
+            else if (settings.Launch == Launch.Livestreamer)
+            {
+                if (File.Exists(settings.LiveStreamerLocation))
+                {
+                    Process.Start(settings.LiveStreamerLocation, launchParameter + " best");
+                }
+                else
+                {
+                    MessageBox.Show("Please setup your Twitch plugin settings correctly.");
+                }
+            }
         }
 
         private string URLBuilder(string between, int limit, string query)

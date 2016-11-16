@@ -13,13 +13,20 @@ namespace WoxTwitch
     public class Main : IPlugin, ISettingProvider, IPluginI18n, ISavable
     {
         private PluginInitContext context { get; set; }
-        private API API = new API();
+        private API API;
 
-        private readonly TwitchSettings _settings;
-        private readonly PluginJsonStorage<TwitchSettings> _storage;
+        private readonly Settings _settings;
+        private readonly PluginJsonStorage<Settings> _storage;
 
         public void Init(PluginInitContext context){
             this.context = context;
+        }
+
+        public Main()
+        {
+            _storage = new PluginJsonStorage<Settings>();
+            _settings = _storage.Load();
+            API = new API(_settings);
         }
 
         List<Result> IPlugin.Query(Query query)
@@ -47,12 +54,12 @@ namespace WoxTwitch
 
         public string GetTranslatedPluginTitle()
         {
-            return this.context.API.GetTranslation("wox_plugin_folder_plugin_name");
+            return "Twitch Browser";
         }
 
         public string GetTranslatedPluginDescription()
         {
-            return context.API.GetTranslation("wox_plugin_folder_plugin_description");
+            return "Browse and search streams on Twitch";
         }
 
         public void Save()

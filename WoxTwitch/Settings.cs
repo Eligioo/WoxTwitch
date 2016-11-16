@@ -9,6 +9,7 @@ namespace WoxTwitch
     public class Settings
     {
         public Launch Launch { get; set; } = Launch.Browser;
+        public string LiveStreamerLocation {get; set;} = "";
     }
 
     public enum Launch
