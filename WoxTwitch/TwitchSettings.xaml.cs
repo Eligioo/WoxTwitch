@@ -43,6 +43,26 @@ namespace WoxTwitch
                 radioLivestreamer.IsEnabled = true;
                 radioLivestreamer.IsChecked = true;
             }
+
+            twtopTextBox.Text = settings.Twtop;
+            twgamesTextBox.Text = settings.Twgames;
+            twstreamTextBox.Text = settings.Twstream;
+
+            twtopTextBox.LostFocus += (o, re) =>
+            {
+                settings.Twtop = twtopTextBox.Text.TrimEnd(' ');
+            };
+
+            twstreamTextBox.LostFocus += (o, re) =>
+            {
+                settings.Twstream = twstreamTextBox.Text.TrimEnd(' ');
+            };
+
+            twgamesTextBox.LostFocus += (o, re) =>
+            {
+                settings.Twgames = twgamesTextBox.Text.TrimEnd(' ');
+            };
+
             radioBrowser.Checked += (o, re) =>
             {
                 settings.Launch = Launch.Browser;

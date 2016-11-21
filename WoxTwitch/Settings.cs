@@ -10,6 +10,9 @@ namespace WoxTwitch
     {
         public Launch Launch { get; set; } = Launch.Browser;
         public string LiveStreamerLocation {get; set;} = "";
+        public string Twtop { get; set; } = "twtop";
+        public string Twgames { get; set; } = "twgames";
+        public string Twstream { get; set; } = "twstream";
     }
 
     public enum Launch

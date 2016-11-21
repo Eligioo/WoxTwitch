@@ -31,15 +31,15 @@ namespace WoxTwitch
 
         List<Result> IPlugin.Query(Query query)
         {
-            if (query.FirstSearch == "twgames")
+            if (query.FirstSearch == this._settings.Twgames)
             {
-                return API.TWTOPGAMES();
+                return API.TWTOPGAMES(context);
             }
-            else if (query.FirstSearch == "twtop")
+            else if (query.FirstSearch == this._settings.Twtop)
             {
                 return API.TWTOPSTREAMS();
             }
-            else if (query.FirstSearch == "twstream" && query.SecondToEndSearch.Length >= 4)
+            else if (query.FirstSearch == this._settings.Twstream && query.SecondToEndSearch.Length >= 4)
             {
                 return API.TWSEARCH(query.SecondToEndSearch);
             }
