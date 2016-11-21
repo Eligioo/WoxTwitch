@@ -19,7 +19,7 @@ namespace WoxTwitch
             this.settings = settings;
         }
 
-        public List<Result> TWTOPGAMES()
+        public List<Result> TWTOPGAMES(Wox.Plugin.PluginInitContext context)
         {
             Reset();
             var TopGames = new Objects.TopGame.RootObject();
@@ -38,8 +38,8 @@ namespace WoxTwitch
                     Score = Score - 1,
                     Action = c =>
                     {
-                        Process.Start("https://twitch.tv/directory/game/" + item.game.name);
-                        return true;
+                        Utility.ChangeQuery(context, item.game.name, settings);
+                        return false;
                     }
                 });
             }
