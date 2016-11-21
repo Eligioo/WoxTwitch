@@ -5,10 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WoxTwitch"
              mc:Ignorable="d" 
-             d:DesignHeight="300" Loaded="OnLoaded" Width="757.091">
+             d:DesignHeight="400" Loaded="OnLoaded" Width="757.091">
     <Grid>
-        <RadioButton x:Name="radioBrowser" Content="Browser" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" GroupName="Launch" Checked="RadioBrowserEvent"/>
-        <RadioButton x:Name="radioLivestreamer" Content="Livestreamer" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" GroupName="Launch" Checked="RadioLivestreamerEvent"/>
-        <TextBox x:Name="textLivestreamer" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="448" Margin="10,53,0,0" GotFocus="textBox_GotFocus"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="93*"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+        <RadioButton x:Name="radioBrowser" Content="Browser" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" GroupName="Launch" Checked="RadioBrowserEvent" Height="15" Width="62"/>
+        <RadioButton x:Name="radioLivestreamer" Content="Livestreamer" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" GroupName="Launch" Checked="RadioLivestreamerEvent" Height="15" Width="86"/>
+        <TextBox x:Name="textLivestreamer" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="448" Margin="10,84,0,0" GotFocus="textBox_GotFocus"/>
+        <Label x:Name="label" Content="Choose stream launch" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="26" Width="128"/>
+        <Label x:Name="label1" Content="Commands" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,145,0,0" Height="26" Width="70"/>
+        <Label x:Name="label2" Content="List of games with the most viewers:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,238,0,0" Height="26" Width="202"/>
+        <Label x:Name="label3" Content="Search through games and streams:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,300,0,0" Height="26" Width="200"/>
+        <Label x:Name="label4" Content="List of streams with most viewers:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,176,0,0" Height="26" Width="187"/>
+        <TextBox x:Name="twstreamTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Margin="10,326,0,0"/>
+        <TextBox x:Name="twgamesTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Margin="10,264,0,0"/>
+        <TextBox x:Name="twtopTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Margin="10,202,0,0"/>
     </Grid>
 </UserControl>
