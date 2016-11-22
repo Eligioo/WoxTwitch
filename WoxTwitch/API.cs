@@ -24,7 +24,7 @@ namespace WoxTwitch
             Reset();
             var TopGames = new Objects.TopGame.RootObject();
             string url = URLBuilder("games/top", 10, "");
-            using (var webClient = new System.Net.WebClient())
+            using (var webClient = new System.Net.WebClient { Encoding = System.Text.Encoding.UTF8 })
             {
                 var jsontxt = webClient.DownloadString(url);
                 TopGames = JsonConvert.DeserializeObject<Objects.TopGame.RootObject>(jsontxt);
@@ -51,7 +51,7 @@ namespace WoxTwitch
             Reset();
             var TopStreams = new Objects.TopStream.RootObject();
             string url = URLBuilder("streams", 10, "");
-            using (var webClient = new System.Net.WebClient())
+            using (var webClient = new System.Net.WebClient { Encoding = System.Text.Encoding.UTF8 })
             {
                 var jsontxt = webClient.DownloadString(url);
                 TopStreams = JsonConvert.DeserializeObject<Objects.TopStream.RootObject>(jsontxt);
@@ -79,7 +79,7 @@ namespace WoxTwitch
             Reset();
             var SearchStream = new Objects.SearchStream.RootObject();
             string url = URLBuilder("search/streams", 10, query).Replace(" ", "%20");
-            using (var webClient = new System.Net.WebClient())
+            using (var webClient = new System.Net.WebClient { Encoding = System.Text.Encoding.UTF8 })
             {
                 var jsontxt = webClient.DownloadString(url);
                 SearchStream = JsonConvert.DeserializeObject<Objects.SearchStream.RootObject>(jsontxt);
