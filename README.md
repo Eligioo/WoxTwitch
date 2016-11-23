@@ -7,6 +7,9 @@ Open Wox (Alt+Space) > wpm install Twitch Browser
 Plugin can be found here: http://www.getwox.com/plugin/106
 
 #Changelog
+2.2.1
+  - Streamlink is now supported due the fact that Livestreamer development has stopped
+
 2.1.1
   - Changed to UTF-8 encoding for displaying results
 
