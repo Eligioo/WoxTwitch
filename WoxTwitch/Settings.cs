@@ -9,7 +9,7 @@ namespace WoxTwitch
     public class Settings
     {
         public Launch Launch { get; set; } = Launch.Browser;
-        public string LiveStreamerLocation {get; set;} = "";
+        public string LocalLocation {get; set;} = "";
         public string Twtop { get; set; } = "twtop";
         public string Twgames { get; set; } = "twgames";
         public string Twstream { get; set; } = "twstream";
@@ -18,6 +18,6 @@ namespace WoxTwitch
     public enum Launch
     {
         Browser = 0,
-        Livestreamer = 1
+        Local = 1
     }
 }

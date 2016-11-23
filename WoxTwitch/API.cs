@@ -114,11 +114,11 @@ namespace WoxTwitch
             {
                 Process.Start(launchParameter);
             }
-            else if (settings.Launch == Launch.Livestreamer)
+            else if (settings.Launch == Launch.Local)
             {
-                if (File.Exists(settings.LiveStreamerLocation))
+                if (File.Exists(settings.LocalLocation))
                 {
-                    Process.Start(settings.LiveStreamerLocation, launchParameter + " best");
+                    Process.Start(settings.LocalLocation, launchParameter + " best");
                 }
                 else
                 {

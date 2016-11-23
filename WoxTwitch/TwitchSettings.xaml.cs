@@ -21,7 +21,7 @@ namespace WoxTwitch
     public partial class TwitchSettings : UserControl
     {
         private Settings settings;
-        private string liveStreamerDirectory;
+        private string localDirectory;
 
         public TwitchSettings(Settings settings)
         {
@@ -33,15 +33,15 @@ namespace WoxTwitch
         {
             if (settings.Launch == Launch.Browser)
             {
-                radioLivestreamer.IsEnabled = true;
+                radioLocal.IsEnabled = true;
                 radioBrowser.IsEnabled = true;
                 radioBrowser.IsChecked = true;
-                textLivestreamer.IsEnabled = false;
+                textLocal.IsEnabled = false;
             }
-            else if(settings.Launch == Launch.Livestreamer)
+            else if(settings.Launch == Launch.Local)
             {
-                radioLivestreamer.IsEnabled = true;
-                radioLivestreamer.IsChecked = true;
+                radioLocal.IsEnabled = true;
+                radioLocal.IsChecked = true;
             }
 
             twtopTextBox.Text = settings.Twtop;
@@ -67,39 +67,42 @@ namespace WoxTwitch
             {
                 settings.Launch = Launch.Browser;
             };
-            radioLivestreamer.Checked += (o, re) =>
+
+            radioLocal.Checked += (o, re) =>
             {
-                settings.Launch = Launch.Livestreamer;
+                settings.Launch = Launch.Local;
             };
-            textLivestreamer.LostFocus += (o, re) =>
+
+            textLocal.LostFocus += (o, re) =>
             {
-                settings.LiveStreamerLocation = this.liveStreamerDirectory;
+                settings.LocalLocation = this.localDirectory;
             };
-            textLivestreamer.Text = settings.LiveStreamerLocation;
+
+            textLocal.Text = settings.LocalLocation;
         }
 
         private void RadioBrowserEvent(object sender, RoutedEventArgs e)
         {
             settings.Launch = Launch.Browser;
-            textLivestreamer.IsEnabled = false;
+            textLocal.IsEnabled = false;
         }
 
-        private void RadioLivestreamerEvent(object sender, RoutedEventArgs e)
+        private void RadioLocalEvent(object sender, RoutedEventArgs e)
         {
-            settings.Launch = Launch.Livestreamer;
-            textLivestreamer.IsEnabled = true;
+            settings.Launch = Launch.Local;
+            textLocal.IsEnabled = true;
         }
 
         private void textBox_GotFocus(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            dlg.DefaultExt = "livestreamer.exe";
-            dlg.Filter = "Livestreamer (livestreamer.exe)|livestreamer.exe";
+            dlg.DefaultExt = "streamlink.exe";
+            dlg.Filter = "Streamlink|streamlink.exe|Livestreamer|livestreamer.exe";
             Nullable<bool> result = dlg.ShowDialog();
             if (result.Value == true)
             {
-                textLivestreamer.Text = dlg.InitialDirectory + dlg.FileName;
-                this.liveStreamerDirectory = dlg.InitialDirectory + dlg.FileName;
+                textLocal.Text = dlg.InitialDirectory + dlg.FileName;
+                this.localDirectory = dlg.InitialDirectory + dlg.FileName;
             }
         }
     }

@@ -12,8 +12,8 @@
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
         <RadioButton x:Name="radioBrowser" Content="Browser" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" GroupName="Launch" Checked="RadioBrowserEvent" Height="15" Width="62"/>
-        <RadioButton x:Name="radioLivestreamer" Content="Livestreamer" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" GroupName="Launch" Checked="RadioLivestreamerEvent" Height="15" Width="86"/>
-        <TextBox x:Name="textLivestreamer" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="448" Margin="10,84,0,0" GotFocus="textBox_GotFocus"/>
+        <RadioButton x:Name="radioLocal" Content="Streamlink or Livestreamer" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" GroupName="Launch" Checked="RadioLocalEvent" Height="15" Width="187"/>
+        <TextBox x:Name="textLocal" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="448" Margin="10,84,0,0" GotFocus="textBox_GotFocus"/>
         <Label x:Name="label" Content="Choose stream launch" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="26" Width="128"/>
         <Label x:Name="label1" Content="Commands" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,145,0,0" Height="26" Width="70"/>
         <Label x:Name="label2" Content="List of games with the most viewers:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,238,0,0" Height="26" Width="202"/>
