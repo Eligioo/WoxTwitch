@@ -59,7 +59,7 @@ namespace WoxTwitch
 
         public string GetTranslatedPluginDescription()
         {
-            return "Browse and search streams on Twitch";
+            return "Browse, search and view streams on Twitch";
         }
 
         public void Save()
