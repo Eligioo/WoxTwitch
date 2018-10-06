@@ -1,0 +1,12 @@
+﻿{
+  "ID":"8IJNMBHGVCDS23WEDCFVGBHNJ876TFRD",
+  "ActionKeyword":"*",
+  "Name":"Twitch Browser",
+  "Description":"Browse, search and view streams on Twitch",
+  "Author":"Eligio",
+  "Version":"2.2.1",
+  "Language":"csharp",
+  "Website":"https://github.com/eligioo",
+  "IcoPath": "Images\\app.png",
+  "ExecuteFileName":"WoxTwitch.dll"
+}
