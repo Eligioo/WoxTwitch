@@ -9,16 +9,22 @@ namespace WoxTwitch
     {
         private PluginInitContext context { get; set; }
         private API API;
+        
+        private Settings _settings;
 
-        private readonly Settings _settings;
-
-        public void Init(PluginInitContext context){
+        public void Init(PluginInitContext context)
+        {
+            if (this._settings == null)
+            {
+                var path = context.CurrentPluginMetadata.PluginDirectory;
+                this._settings = SettingsFile.Read(path);
+                this._settings.PropertyChanged += (obj, sender) => SettingsFile.Write(path, obj as Settings); // Save settings file on change
+            }
             this.context = context;
         }
 
         public Main()
         {
-            _settings = new Settings();
             API = new API(_settings);
         }
 
