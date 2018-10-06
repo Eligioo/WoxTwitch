@@ -4,7 +4,7 @@
   "Name":"Twitch Browser",
   "Description":"Browse, search and view streams on Twitch",
   "Author":"Eligio",
-  "Version":"2.2.1",
+  "Version":"2.2.2",
   "Language":"csharp",
   "Website":"https://github.com/eligioo",
   "IcoPath": "Images\\app.png",
