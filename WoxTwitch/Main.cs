@@ -1,31 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Windows;
 using System.Windows.Controls;
 using Wox.Plugin;
-using Wox.Infrastructure.Storage;
 
 namespace WoxTwitch
 {
-    public class Main : IPlugin, ISettingProvider, IPluginI18n, ISavable
+    public class Main : IPlugin, ISettingProvider, IPluginI18n
     {
         private PluginInitContext context { get; set; }
         private API API;
+        
+        private Settings _settings;
 
-        private readonly Settings _settings;
-        private readonly PluginJsonStorage<Settings> _storage;
-
-        public void Init(PluginInitContext context){
+        public void Init(PluginInitContext context)
+        {
+            if (this._settings == null)
+            {
+                var path = context.CurrentPluginMetadata.PluginDirectory;
+                this._settings = SettingsFile.Read(path);
+                this._settings.PropertyChanged += (obj, sender) => SettingsFile.Write(path, obj as Settings); // Save settings file on change
+            }
             this.context = context;
         }
 
         public Main()
         {
-            _storage = new PluginJsonStorage<Settings>();
-            _settings = _storage.Load();
             API = new API(_settings);
         }
 
@@ -60,11 +59,6 @@ namespace WoxTwitch
         public string GetTranslatedPluginDescription()
         {
             return "Browse, search and view streams on Twitch";
-        }
-
-        public void Save()
-        {
-            _storage.Save();
         }
     }
 }
