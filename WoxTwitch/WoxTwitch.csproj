@@ -60,9 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
+    <Compile Include="Objects\SearchByChannel.cs" />
     <Compile Include="Objects\SearchByGame.cs" />
     <Compile Include="Objects\TopGames.cs" />
     <Compile Include="Objects\TopStreams.cs" />
+    <Compile Include="Objects\UtilityObjects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="API.cs" />
     <Compile Include="Settings.cs" />

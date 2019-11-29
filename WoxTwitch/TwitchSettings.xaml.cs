@@ -47,6 +47,7 @@ namespace WoxTwitch
             twtopTextBox.Text = settings.Twtop;
             twgamesTextBox.Text = settings.Twgames;
             twstreamTextBox.Text = settings.Twstream;
+            twchannelTextBox.Text = settings.Twchannel;
 
             twtopTextBox.LostFocus += (o, re) =>
             {
@@ -56,6 +57,11 @@ namespace WoxTwitch
             twstreamTextBox.LostFocus += (o, re) =>
             {
                 settings.Twstream = twstreamTextBox.Text.TrimEnd(' ');
+            };
+
+            twchannelTextBox.LostFocus += (o, re) =>
+            {
+                settings.Twchannel = twchannelTextBox.Text.TrimEnd(' ');
             };
 
             twgamesTextBox.LostFocus += (o, re) =>
