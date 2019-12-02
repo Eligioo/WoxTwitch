@@ -4,7 +4,7 @@ Browse and search Twitch streams through Wox Launcher
 #Installation
 Open Wox (Alt+Space) > wpm install Twitch Browser
 
-Plugin can be found here: http://www.getwox.com/plugin/106
+Plugin can be found here: http://www.wox.one/plugin/106
 
 #Changelog
 2.2.1
