@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Controls;
 using Wox.Plugin;
 
@@ -9,8 +8,8 @@ namespace WoxTwitch
     {
         private PluginInitContext context { get; set; }
         private API API;
-        
-        private Settings _settings;
+
+        private Settings _settings { get; set; }
 
         public void Init(PluginInitContext context)
         {
@@ -21,6 +20,8 @@ namespace WoxTwitch
                 this._settings.PropertyChanged += (obj, sender) => SettingsFile.Write(path, obj as Settings); // Save settings file on change
             }
             this.context = context;
+            if (API.settings == null)
+                API.settings = this._settings;
         }
 
         public Main()
@@ -31,17 +32,13 @@ namespace WoxTwitch
         List<Result> IPlugin.Query(Query query)
         {
             if (query.FirstSearch == this._settings.Twgames)
-            {
                 return API.TWTOPGAMES(context);
-            }
             else if (query.FirstSearch == this._settings.Twtop)
-            {
                 return API.TWTOPSTREAMS();
-            }
             else if (query.FirstSearch == this._settings.Twstream && query.SecondToEndSearch.Length >= 4)
-            {
                 return API.TWSEARCH(query.SecondToEndSearch);
-            }
+            else if (query.FirstSearch == this._settings.Twchannel && query.SecondToEndSearch.Length >= 4)
+                return API.TWSEARCHCHANNEL(query.SecondToEndSearch);
 
             return new List<Result>();
         }

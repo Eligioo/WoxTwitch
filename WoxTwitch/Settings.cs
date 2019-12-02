@@ -55,6 +55,14 @@ namespace WoxTwitch
             set => SetField(ref _twstream, value);
         }
         private string _twstream = "twstream";
+
+        public string Twchannel
+        {
+            get => this._twchannel;
+            set => SetField(ref _twchannel, value);
+        }
+        private string _twchannel = "twchannel";
+
     }
 
     public enum Launch

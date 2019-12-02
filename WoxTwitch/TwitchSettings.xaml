@@ -18,8 +18,10 @@
         <Label x:Name="label1" Content="Commands" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,145,0,0" Height="26" Width="70"/>
         <Label x:Name="label2" Content="List of games with the most viewers:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,238,0,0" Height="26" Width="202"/>
         <Label x:Name="label3" Content="Search through games and streams:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,300,0,0" Height="26" Width="200"/>
+        <Label x:Name="label5" Content="Search channels:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="289,176,0,0" Height="26" Width="200"/>
         <Label x:Name="label4" Content="List of streams with most viewers:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,176,0,0" Height="26" Width="187"/>
         <TextBox x:Name="twstreamTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Margin="10,326,0,0"/>
+        <TextBox x:Name="twchannelTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Margin="289,202,0,0"/>
         <TextBox x:Name="twgamesTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Margin="10,264,0,0"/>
         <TextBox x:Name="twtopTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Margin="10,202,0,0"/>
     </Grid>
